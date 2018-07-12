@@ -8,11 +8,25 @@ it('should add 2 numbers', () => {
     .toBeA('number');
 });
 
+it('should add to number asynchronously', (done) => {
+  var res = utils.asyncAdd(10, 2, (sum) => {
+    expect(sum).toBe(12).toBeA('number');
+    done();
+  });
+});
+
 it('should square a number', () => {
   var res = utils.square(9);
   expect(res)
     .toBe(81)
     .toBeA('number');
+});
+
+it('should square a number asynchronously', (done) => {
+  utils.asyncSquare(10, (result) => {
+    expect(result).toBe(100).toBeA('number');
+    done();
+  })
 });
 
 it('should set the names correctly', () => {
@@ -27,3 +41,4 @@ it('should set the names correctly', () => {
       lastname: 'OUAFIR'
     });
 });
+
